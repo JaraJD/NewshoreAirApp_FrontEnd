@@ -5,6 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app/app.component';
 import { IndexComponent } from './index/index.component';
 import { DataModule } from 'src/data/data.module';
+import { CommonModule } from '@angular/common';
 
 @NgModule({
   declarations: [
@@ -12,6 +13,7 @@ import { DataModule } from 'src/data/data.module';
     IndexComponent
   ],
   imports: [
+    CommonModule,
     BrowserModule,
     AppRoutingModule,
     DataModule,

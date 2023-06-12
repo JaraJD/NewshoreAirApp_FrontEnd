@@ -12,26 +12,45 @@ export class MainHomeComponent {
 
   flights: FlightModel[]
   flightForm: FormGroup;
+  currencySelected: string;
+  totalPrice: number;
 
   constructor(private journeyGet : GetJourneyUseCase){
     this.flightForm = new FormGroup({
       origin: new FormControl<string>('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
       destination: new FormControl<string>('', [Validators.required, Validators.minLength(3), Validators.maxLength(3)]),
-      limit: new FormControl<number>(0, Validators.required),
+      limit: new FormControl<number>(0,Validators.required),
+      currency: new FormControl<string>('',Validators.required),
     });
     this.flights = [];
+    this.currencySelected = '';
+    this.totalPrice = 0;
   }
 
   send(){
     console.log(this.flightForm.value);
-    this.journeyGet.execute(this.flightForm.value).subscribe({
+    var object = {
+      origin: this.flightForm.get('origin')?.value,
+      destination: this.flightForm.get('destination')?.value,
+      limit: this.flightForm.get('limit')?.value,
+    }
+    this.currencySelected = this.flightForm.get('currency')?.value;
+    this.journeyGet.execute(object).subscribe({
       next: journey => {
       console.log(journey);
       this.flights = journey.flights;
+      this.totalPrice = journey.price;
         
       },
       error : err => console.log(err),
       complete : () => {console.log(this.flights)}
     })
   }
+
+
+  get origin() {
+    return this.flightForm.get('origin');
+  }
+
+
 }
