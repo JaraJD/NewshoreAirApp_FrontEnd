@@ -8,3 +8,11 @@ This application has been designed under a layered architecture.
 
 [Clean architecture](https://medium.com/taager-tech-blog/clean-architecture-for-angular-applications-b7ab140f0d5a)
 
+## Access to the application
+
+[View the application](https://nsair-hosting.web.app)
+
+The application has been deployed on the hosting offered by firebase.
+
+
+
