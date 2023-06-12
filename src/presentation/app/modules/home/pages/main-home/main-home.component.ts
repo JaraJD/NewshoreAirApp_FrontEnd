@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { FormControl, FormGroup, Validators } from '@angular/forms';
 import { FlightModel } from 'src/domain/models/flight.model';
 import { GetJourneyUseCase } from 'src/domain/use-cases/queries/get-journey.usecase';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'nsair-main-home',
@@ -30,8 +31,8 @@ export class MainHomeComponent {
   send(){
     console.log(this.flightForm.value);
     var object = {
-      origin: this.flightForm.get('origin')?.value,
-      destination: this.flightForm.get('destination')?.value,
+      origin: this.flightForm.get('origin')?.value.toUpperCase(),
+      destination: this.flightForm.get('destination')?.value.toUpperCase(),
       limit: this.flightForm.get('limit')?.value,
     }
     this.currencySelected = this.flightForm.get('currency')?.value;
@@ -42,7 +43,15 @@ export class MainHomeComponent {
       this.totalPrice = journey.price;
         
       },
-      error : err => console.log(err),
+      error : err => {
+        console.log(err.error.Message),
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: err.error.Message,
+          footer: '<a href="home">Please try again</a>'
+        })
+      },
       complete : () => {console.log(this.flights)}
     })
   }
