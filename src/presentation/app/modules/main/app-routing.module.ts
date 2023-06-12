@@ -8,6 +8,13 @@ const routes: Routes = [
     component: IndexComponent
   },
   {
+    path: 'home', // localhost:4200/home
+        loadChildren: () =>
+          import('../home/home.module').then(
+            (m) => m.HomeModule
+        ),
+  },
+  {
     path: '**',
     redirectTo: ''
   }

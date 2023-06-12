@@ -15,8 +15,8 @@ export class JourneyImplementationRepository extends JourneyRepository {
         super();
     }
 
-    GetJourneyAsync(params : {origin : string, destination : string, limit: number}): Observable<JourneyVmModel[]> {
-        return this.http.get<JourneyVmModel[]>(`${environment.url_backend_newshoreAir}/${params.origin}/${params.destination}/${params.limit}`);
+    GetJourneyAsync(params : {origin : string, destination : string, limit: number}): Observable<JourneyVmModel> {
+        return this.http.get<JourneyVmModel>(`${environment.url_backend_newshoreAir}/${params.origin}/${params.destination}/${params.limit}`);
     }
 
 }

@@ -6,7 +6,7 @@ import { CommonModule } from "@angular/common";
 import { HttpClientModule } from "@angular/common/http";
 
 const getJourneyUseCaseFactory = 
-(userRepo: JourneyRepository) => new GetJourneyUseCase(userRepo);
+(journeyRepo: JourneyRepository) => new GetJourneyUseCase(journeyRepo);
 export const getJourneyUseCaseProvider = {
     provide: GetJourneyUseCase,
     useFactory: getJourneyUseCaseFactory,

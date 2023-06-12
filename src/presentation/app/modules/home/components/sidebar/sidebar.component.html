@@ -1,0 +1,35 @@
+
+<div class="d-flex flex-column flex-shrink-0 p-3 text-bg-dark" style="width: 280px;">
+
+    <a class="d-flex align-items-center pb-3 mb-3 link-body-emphasis text-decoration-none border-bottom">
+      <svg class="bi pe-none me-2" width="30" height="24"><use xlink:href="#bootstrap"/></svg>
+      <span class="fs-5 fw-semibold">Menu</span>
+    </a>
+
+    <form id="usuarioForm" (ngSubmit)="send()" [formGroup]="flightForm">
+
+        <div class="collapse show" id="home-collapse">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Origin" formControlName="origin">
+            <label for="floatingInput">Origin</label>
+          </div>
+        </div>
+
+        <div class="collapse show" id="home-collapse">
+          <div class="form-floating mb-3">
+            <input type="text" class="form-control" id="floatingInput" placeholder="Destination" formControlName="destination">
+            <label for="floatingInput">Destination</label>
+          </div>
+        </div>
+
+        <div class="collapse show" id="home-collapse">
+          <div class="form-floating mb-3">
+            <input type="number" class="form-control" id="floatingInput" placeholder="Number of flights" formControlName="limit">
+            <label for="floatingInput">Number of flights</label>
+          </div>
+        </div>
+
+        <button type="button" class="btn btn-primary" type="submit" form="usuarioForm" [disabled]="flightForm.invalid">Search</button>
+
+    </form>
+  </div>
